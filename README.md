@@ -1,5 +1,6 @@
 # dsgov-elements
 
+Custom Elements library based at the official Design System of the Brazilian Federal Government (called DSGOV). These components are built using [VueJS](https://vuejs.org).
 
 ### DSGOV official pages
 See [Design System Reference](http://dsgov.estaleiro.serpro.gov.br).
