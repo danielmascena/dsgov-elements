@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" width=50>
+    <figure>
+      <img alt="Vue logo" src="./assets/logo.png" width=50>
+    </figure>
     <AppButton label='Hello' />
     <AppButton label="Primary" type="filled" />
     <AppButton label="Secondary" type="outlined" />

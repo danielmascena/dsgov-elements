@@ -1,7 +1,7 @@
 <template>
-    <div>
+    <div class="button-container">
         <button class="default" :class="{primary: type === 'filled', secondary: type === 'outlined'}" @click="activateLoad()" aria-label="">
-           <span v-if="isLoading" class="load-icon"><p class="ghost-text">{{label}}</p></span> 
+           <span v-if="isLoading" class="loading-icon"><span class="ghost-text">{{label}}</span></span> 
             <span v-else>
                 <slot name="button-icon">
                 </slot>
@@ -51,6 +51,7 @@ export default {
     methods: {
         activateLoad() {
             this.isLoading = true;
+            // trigger the loading to emulate a action occurring
             setTimeout(() => this.isLoading = false, 1000);
         }
     }
@@ -59,18 +60,22 @@ export default {
 
 <style scoped>
 
+.button-container {
+    display: inline-grid;
+}
+
 button {
     --button-color: #1351B4;
 }
 
 .default {
-    padding: 10px;
+    padding: 0px 10px;
     background-color: transparent;
     border-radius: 25px;
     color: var(--button-color);
     min-width: 30px;
+    position: relative;
     height: 30px;
-    line-height: 0.8;
     border: none;
     margin: 2px;
 }
@@ -90,6 +95,7 @@ button {
 
 .primary {
     background-color: var(--button-color);
+    border: 1px solid var(--button-color);
     color: #FFF;
 }
 
@@ -100,16 +106,17 @@ button {
 .ghost-text {
     visibility: hidden;
     height: 1px;
-    position: relative;
-    top: -23px;
 }
-
-.load-icon:before {
+.loading-icon {
+    display: inline-flex;
+    justify-content: center;
+}
+.loading-icon:before {
     border: solid 1px var(--button-color);
     content: "";
     width: 10px;
-    position: relative;
-    display: inline-block;
+    position: absolute;
+    top: 10px;
     height: 10px;
     border-top: transparent;
     border-left: transparent;
@@ -117,7 +124,7 @@ button {
     animation: spinning 1s infinite linear;
 }
 
-.primary .load-icon:before {
+.primary .loading-icon:before {
     border-color: #FFF;
 }
 
