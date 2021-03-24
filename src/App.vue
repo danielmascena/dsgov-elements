@@ -3,19 +3,28 @@
     <figure>
       <img alt="Vue logo" src="./assets/logo.png" width=50>
     </figure>
-    <AppButton label='Hello' />
-    <AppButton label="Primary" type="filled" />
-    <AppButton label="Secondary" type="outlined" />
+    <div>
+      <AppButton label='Hello' />
+      <AppButton label="Primary" type="filled" />
+      <AppButton label="Secondary" type="outlined" />
+    </div>
+    <div>
+      <AppAvatar />
+      <AppAvatar iconic />
+      <AppAvatar imgSrc="https://picsum.photos/id/823/400" />
+    </div>
   </div>
 </template>
 
 <script>
-import AppButton from './components/AppButton.vue'
+import AppButton from './components/AppButton.vue';
+import AppAvatar from './components/AppAvatar.vue';
 
 export default {
   name: 'App',
   components: {
-    AppButton
+    AppButton,
+    AppAvatar,
   }
 }
 </script>

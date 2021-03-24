@@ -78,6 +78,7 @@ button {
     height: 30px;
     border: none;
     margin: 2px;
+    font-weight: 600;
 }
 
 .default:focus {
@@ -97,6 +98,10 @@ button {
     background-color: var(--button-color);
     border: 1px solid var(--button-color);
     color: #FFF;
+}
+
+.primary:hover {
+    background-color: #6e6ebd;
 }
 
 .secondary {
