@@ -44,17 +44,19 @@ export default {
 
 <style scoped>
 .avatar {
+    --avatar-dimension: 50px;
     margin: 10px;
+    line-height: var(--avatar-dimension);
     display: inline-block;
     background-color: lightgreen;
-    height: 30px;
-    width: 30px;
+    height: var(--avatar-dimension);
+    width: var(--avatar-dimension);
     border-radius: 50%;
     overflow: hidden;
 }
 .image img {
-    height: 30px;
-    width: 30px;
+    width: var(--avatar-dimension);
+    height: var(--avatar-dimension);
 }
 .user-icon:before {
     content: "\265E";
