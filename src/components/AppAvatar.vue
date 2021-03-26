@@ -53,6 +53,8 @@ export default {
     width: var(--avatar-dimension);
     border-radius: 50%;
     overflow: hidden;
+    font-weight: 900;
+    font-size: 150%;
 }
 .image img {
     width: var(--avatar-dimension);
