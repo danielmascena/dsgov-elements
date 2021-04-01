@@ -2,7 +2,7 @@
     <span class="avatar" :title="name">
         <span v-if="isIcon || imgSrc" class="image">
             <i v-if="isIcon" class="user-icon" aria-hidden="true"></i>
-            <img v-else :src="imgSrc" alt="Avatar" />
+            <img v-else :src="imgSrc" alt="Avatar" loading="lazy" />
         </span>
         <span v-else class="text-secondary">{{avatarLetter}}</span>
     </span>
