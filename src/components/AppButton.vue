@@ -3,8 +3,7 @@
         <button class="default" :class="{primary: type === 'filled', secondary: type === 'outlined'}" @click="activateLoad()" aria-label="">
            <span v-if="isLoading" class="loading-icon"><span class="ghost-text">{{label}}</span></span> 
             <span v-else>
-                <slot name="button-icon">
-                </slot>
+                <slot name="button-icon"></slot>
                 {{label}}
             </span>
         </button>
@@ -45,7 +44,7 @@ export default {
     },
     data() {
         return {
-            isLoading: false
+            isLoading: false,
         }
     },
     methods: {
@@ -65,20 +64,31 @@ export default {
 }
 
 button {
+    --font-size-scale-up-01: 16.8px;
+    --button-font-size: var(--font-size-scale-up-01);
     --button-color: #1351B4;
+    --button-xsmall: 24px;
+    --button-small: 32px;
+    --button-medium: 40px;
+    --button-large: 48px;
+    --button-size: var(--button-medium);
 }
 
 .default {
     padding: 0px 10px;
-    background-color: transparent;
+    border: 1px solid transparent;
     border-radius: 25px;
     color: var(--button-color);
-    min-width: 30px;
+    cursor: pointer;
+    font-size: var(--button-font-size);
+    min-width: 40px;
     position: relative;
-    height: 30px;
-    border: none;
+    height: 38px;
     margin: 2px;
     font-weight: 600;
+}
+.default.is-icon {
+    border-radius: 50%;
 }
 
 .default:focus {
@@ -96,7 +106,7 @@ button {
 
 .primary {
     background-color: var(--button-color);
-    border: 1px solid var(--button-color);
+    border-color: var(--button-color);
     color: #FFF;
 }
 
@@ -105,23 +115,25 @@ button {
 }
 
 .secondary {
-    border: 1px solid var(--button-color);
+    border-color: var(--button-color);
 }
 
 .ghost-text {
     visibility: hidden;
-    height: 1px;
 }
+.btn-icon {
+    display: inline-block;
+}
+
 .loading-icon {
-    display: inline-flex;
-    justify-content: center;
+    display: inline-grid;
+    place-items: center
 }
 .loading-icon:before {
     border: solid 1px var(--button-color);
     content: "";
     width: 10px;
     position: absolute;
-    top: 10px;
     height: 10px;
     border-top: transparent;
     border-left: transparent;

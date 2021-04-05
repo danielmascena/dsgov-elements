@@ -4,13 +4,16 @@
       <AppButton label='Hello' />
       <AppButton label="Primary" type="filled" />
       <AppButton label="Secondary" type="outlined" />
+      <app-button>
+        <span slot="button-icon">&#8855;</span>
+        </app-button>
     </div>
     <div>
       <AppAvatar />
       <AppAvatar iconic />
       <AppAvatar imgSrc="https://picsum.photos/id/823/400" />
     </div>
-    <div>
+    <div class="centered">
         <AppCard>
             <h1 slot="header">
                 <AppAvatar imgSrc="https://picsum.photos/id/823/400/400" />
@@ -22,9 +25,6 @@
             </div>
             <div slot="footer">
                 <AppButton label="Button" />
-                <app-button>
-
-                </app-button>
             </div>
         </AppCard>
     </div>
@@ -45,3 +45,10 @@ export default {
     }
 }
 </script>
+
+<style>
+.centered {
+max-width: 50%;
+margin: auto;
+}
+</style>
