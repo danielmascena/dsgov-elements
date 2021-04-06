@@ -1,7 +1,10 @@
 <template>
     <div class="button-container">
         <button class="default" :class="{primary: type === 'filled', secondary: type === 'outlined'}" @click="activateLoad()" aria-label="">
-           <span v-if="isLoading" class="loading-icon"><span class="ghost-text">{{label}}</span></span> 
+           <span v-if="isLoading" class="loading-container">
+            <span class="loading-icon"></span>
+            <span class="ghost-text">{{label}}</span>
+           </span> 
             <span v-else>
                 <slot name="button-icon"></slot>
                 {{label}}
@@ -44,7 +47,7 @@ export default {
     },
     data() {
         return {
-            isLoading: false,
+            isLoading: false, 
         }
     },
     methods: {
@@ -125,10 +128,15 @@ button {
     display: inline-block;
 }
 
-.loading-icon {
+.loading-container {
+    height: 100%;
     display: inline-grid;
-    place-items: center
+    place-items: center;
 }
+.loading-icon {
+    transform: translateX(-5px);
+}
+
 .loading-icon:before {
     border: solid 1px var(--button-color);
     content: "";
