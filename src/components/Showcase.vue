@@ -1,5 +1,6 @@
 <template>
     <div>
+        <AppLoading />
         <div class="button-group">
             <AppButton label='Hello' />
             <AppButton label="Primary" type="filled" />
@@ -17,8 +18,8 @@
             <AppCard>
                 <h1 slot="header">
                     <AppAvatar imgSrc="https://picsum.photos/id/823/400/400" />
-                    <p>Picture Lady</p>
-                    <span>Nature Paparazzi</span>
+                    <p>Lady Lannister</p>
+                    <span>Wildlife Paparazzi</span>
                 </h1>
                 <div slot="content">
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, voluptatibus quod? Cupiditate saepe dignissimos ab nam id expedita vero cum ea similique labore, architecto voluptates quas! Voluptatum dolorem quibusdam pariatur!</p>
@@ -28,6 +29,9 @@
                 </div>
             </AppCard>
         </div>
+        <div>
+            <app-tab></app-tab>
+        </div>
     </div>
 </template>
 
@@ -35,6 +39,8 @@
 import AppButton from './AppButton';
 import AppAvatar from './AppAvatar';
 import AppCard from './AppCard';
+import AppTab from './AppTab';
+import AppLoading from './AppLoading';
 
 export default {
     name: 'Showcase',
@@ -42,6 +48,8 @@ export default {
         AppButton,
         AppAvatar,
         AppCard,
+        AppTab,
+        AppLoading
     }
 }
 </script>
