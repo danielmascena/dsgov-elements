@@ -28,9 +28,8 @@
                     <AppButton label="Button" />
                 </div>
             </AppCard>
-        </div>
-        <div>
             <app-tab></app-tab>
+            <app-list :items="['item 1', 'item 2', 'item 3']"></app-list>
         </div>
     </div>
 </template>
@@ -41,6 +40,7 @@ import AppAvatar from './AppAvatar';
 import AppCard from './AppCard';
 import AppTab from './AppTab';
 import AppLoading from './AppLoading';
+import AppList from './AppList';
 
 export default {
     name: 'Showcase',
@@ -49,7 +49,8 @@ export default {
         AppAvatar,
         AppCard,
         AppTab,
-        AppLoading
+        AppLoading,
+        AppList,
     }
 }
 </script>
