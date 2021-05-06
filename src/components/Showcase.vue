@@ -30,6 +30,7 @@
             </AppCard>
             <app-tab></app-tab>
             <app-list :items="['item 1', 'item 2', 'item 3']"></app-list>
+            <AppNav />
         </div>
     </div>
 </template>
@@ -41,6 +42,7 @@ import AppCard from './AppCard';
 import AppTab from './AppTab';
 import AppLoading from './AppLoading';
 import AppList from './AppList';
+import AppNav from './AppNav';
 
 export default {
     name: 'Showcase',
@@ -51,6 +53,7 @@ export default {
         AppTab,
         AppLoading,
         AppList,
+        AppNav,
     }
 }
 </script>
