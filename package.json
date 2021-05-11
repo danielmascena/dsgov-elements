@@ -8,6 +8,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@govbr/dsgov": "file:dsgov-latest.tgz",
     "core-js": "^3.6.5",
     "vue": "^2.6.11"
   },

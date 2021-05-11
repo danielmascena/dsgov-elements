@@ -44,7 +44,7 @@ import AppTab from './AppTab';
 import AppLoading from './AppLoading';
 import AppList from './AppList';
 import AppNav from './AppNav';
-import AppFooter from './dsgov/AppFooter/AppFooter';
+import AppFooter from './AppFooter/AppFooter';
 
 export default {
     name: 'Showcase',
