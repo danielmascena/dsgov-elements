@@ -32,6 +32,7 @@
             <app-list :items="['item 1', 'item 2', 'item 3']"></app-list>
             <AppNav />
         </div>
+        <AppFooter></AppFooter>
     </div>
 </template>
 
@@ -43,6 +44,7 @@ import AppTab from './AppTab';
 import AppLoading from './AppLoading';
 import AppList from './AppList';
 import AppNav from './AppNav';
+import AppFooter from './dsgov/AppFooter/AppFooter';
 
 export default {
     name: 'Showcase',
@@ -54,6 +56,7 @@ export default {
         AppLoading,
         AppList,
         AppNav,
+        AppFooter
     }
 }
 </script>
