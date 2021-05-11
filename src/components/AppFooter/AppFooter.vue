@@ -12,17 +12,17 @@
         data-toggle="data-toggle"
         data-unique="data-unique"
       >
-        <div class="col-2" v-for="item in categorias" :key="item.id"> 
+        <div class="col-2" v-for="categoria in categorias" :key="categoria.id"> 
           <a class="br-item header" href="javascript:void(0)">
             <div class="content text-down-01 text-bold text-uppercase">
-              {{item.header}}
+              {{categoria.header}}
             </div>
             <div class="support">
               <i class="fas fa-angle-up" aria-hidden="true"></i></div
           ></a>
           <div class="br-list">
             <span class="br-divider d-md-none"></span
-            ><a class="br-item" v-for="item2 in item.itensCategorias" :key="item2.id" :href="item2.href"><div class="content">{{item2.label}}</div></a
+            ><a class="br-item" v-for="item in categoria.itensCategorias" :key="item.id" :href="item.href"><div class="content">{{item.label}}</div></a
             
             ><span class="br-divider d-md-none"></span>
           </div>
