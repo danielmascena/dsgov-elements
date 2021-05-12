@@ -35,7 +35,7 @@
       <app-list :items="['item 1', 'item 2', 'item 3']"></app-list>
       <AppNav />
     </div>
-    <AppFooter :categorias="categorias" :logo="logoFooter" />
+    <AppFooter :categorias="categorias" :logo="logoFooter" :redesSociais="redesSociais" />
   </div>
 </template>
 
@@ -66,6 +66,23 @@ export default {
   data() {
     return {
       logoFooter: "https://dataprev.gov.br/imagens/marcaDataprev_.png",
+      redesSociais:[
+        {
+          id: 1,
+          href: "http://www.facebook.com",
+          src: "https://cdn.dsgovserprodesign.estaleiro.serpro.gov.br/design-system/images/button-negative.png",
+        },
+        {
+          id: 2,
+          href: "http://www.youtube.com",
+          src: "https://cdn.dsgovserprodesign.estaleiro.serpro.gov.br/design-system/images/button-negative.png"
+        },
+        {
+          id: 3,
+          href: "http://www.instagram.com",
+          src: "https://cdn.dsgovserprodesign.estaleiro.serpro.gov.br/design-system/images/button-negative.png"
+        }
+      ],
       categorias: [
         {
           id: 1,

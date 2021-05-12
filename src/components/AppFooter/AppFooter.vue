@@ -28,17 +28,8 @@
         <div class="row align-items-end justify-content-between py-5">
           <div class="col social-network">
             <p class="text-up-01 text-extra-bold text-uppercase">Redes Sociais</p>
-            <a class="mr-3" href="javascript:void(0);">
-              <img src="https://cdn.dsgovserprodesign.estaleiro.serpro.gov.br/design-system/images/button-negative.png" alt="Imagem" />
-            </a>
-            <a class="mr-3" href="javascript:void(0);">
-              <img src="https://cdn.dsgovserprodesign.estaleiro.serpro.gov.br/design-system/images/button-negative.png" alt="Imagem" />
-            </a>
-            <a class="mr-3" href="javascript:void(0);">
-              <img src="https://cdn.dsgovserprodesign.estaleiro.serpro.gov.br/design-system/images/button-negative.png" alt="Imagem" />
-            </a>
-            <a class="mr-3" href="javascript:void(0);">
-              <img src="https://cdn.dsgovserprodesign.estaleiro.serpro.gov.br/design-system/images/button-negative.png" alt="Imagem" />
+            <a class="mr-3"  v-for="rede in redesSociais" :key="rede.id" :href="rede.href">
+              <img :src="rede.src" alt="Imagem" />
             </a>
           </div>
           <div class="col assigns text-right">
@@ -77,6 +68,20 @@ export default {
     logo: {
       type: String,
       default: "https://cdn.dsgovserprodesign.estaleiro.serpro.gov.br/design-system/images/logo-negative.png"
+    },
+    redesSociais: {
+      id: {
+        type: Number,
+        required: true
+      },
+      src: {
+        type: String,
+        required: true
+      },
+      href: {
+        type: String,
+        required: true
+      }
     },
     categorias: {
       type: Array
