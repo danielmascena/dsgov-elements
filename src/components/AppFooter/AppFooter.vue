@@ -1,5 +1,5 @@
 <template>
-  <footer :class="{ 'br-footer': true, 'inverted': inverted }">
+  <footer :class="{ 'br-footer': true, inverted: inverted }">
     <div class="container-lg">
       <div class="logo">
         <img :src="logo" alt="Logo footer" />
@@ -63,11 +63,11 @@ export default {
   props: {
     inverted: {
       type: Boolean,
-      default: false
+      default: false,
     },
     logo: {
       type: String,
-      default: "https://cdn.dsgovserprodesign.estaleiro.serpro.gov.br/design-system/images/logo-negative.png"
+      default: "https://cdn.dsgovserprodesign.estaleiro.serpro.gov.br/design-system/images/logo-negative.png",
     },
     redesSociais: {
       id: {
@@ -84,8 +84,29 @@ export default {
       }
     },
     categorias: {
-      type: Array
-    }
-  }
+      type: Array,
+      validator: (object) => {
+        let validations = new Set();
+
+        if (object.length) {
+          object.forEach(item => {
+            if (item.id && item.header && item.itensCategorias) {
+              item.itensCategorias.forEach(itemCategoria => {
+                if (itemCategoria.id && itemCategoria.label && itemCategoria.href) {
+                  validations.add(true);
+                } else {
+                  validations.add(false);
+                }
+              });
+            } else {
+              validations.add(false);
+            }
+          });
+        }
+
+        return !validations.has(false);
+      },
+    },
+  },
 };
 </script>
