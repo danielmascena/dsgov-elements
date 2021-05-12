@@ -32,7 +32,7 @@
             <app-list :items="['item 1', 'item 2', 'item 3']"></app-list>
             <AppNav />
         </div>
-        <AppFooter></AppFooter>
+        <AppFooter />
     </div>
 </template>
 

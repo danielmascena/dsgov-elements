@@ -1,9 +1,10 @@
 <template>
-  <footer class="br-footer">
+  <footer :class="{ 'br-footer': true, 'inverted': inverted }">
     <div class="container-lg">
-      <div class="logo text-center">
+      <div class="logo">
         <img src="https://cdn.dsgovserprodesign.estaleiro.serpro.gov.br/design-system/images/logo-negative.png" alt="Imagem" />
       </div>
+
       <div class="br-list horizontal" data-toggle="data-toggle" data-unique="data-unique">
         <div class="col-2" v-for="categoria in categorias" :key="categoria.id">
           <a class="br-item header" href="javascript:void(0)">
@@ -68,7 +69,12 @@ import "../../../node_modules/@govbr/dsgov/dist/components/button/button.css";
 
 export default {
   name: "AppFooter",
-  props: {},
+  props: {
+    inverted: {
+      type: Boolean,
+      default: false
+    },
+  },
   data() {
     return {
       categorias: [
