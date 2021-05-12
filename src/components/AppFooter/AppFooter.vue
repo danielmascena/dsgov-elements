@@ -33,11 +33,7 @@
             </a>
           </div>
           <div class="col assigns text-right">
-            <img class="ml-4" src="https://cdn.dsgovserprodesign.estaleiro.serpro.gov.br/design-system/images/logo-assign-negative.png" alt="Imagem" /><img
-              class="ml-4"
-              src="https://cdn.dsgovserprodesign.estaleiro.serpro.gov.br/design-system/images/logo-assign-negative.png"
-              alt="Imagem"
-            />
+            <img class="ml-4" v-for="img in imagensRodape" :key="img.id" :src="img.src" alt="Imagem" />
           </div>
         </div>
       </div>
@@ -45,7 +41,7 @@
     <span class="br-divider my-3"></span>
     <div class="container-lg">
       <div class="info">
-        <div class="text-down-01 text-medium pb-3 text-center">Texto destinado a exibição de informações relacionadas à&nbsp;<strong>licença de uso.</strong></div>
+        <div class="text-down-01 text-medium pb-3 text-center">{{textoRodape}}</div>
       </div>
     </div>
   </footer>
@@ -65,9 +61,24 @@ export default {
       type: Boolean,
       default: false,
     },
+    imagensRodape: {
+        id: {
+          type: Number,
+          required: true
+        },
+        src: {
+          type: String,
+          required: true,
+        }        
+    },
+    textoRodape:{
+      type: String,
+      default: "Texto destinado a exibição de informações relacionadas à licença de uso."
+    },
     logo: {
       type: String,
-      default: "https://cdn.dsgovserprodesign.estaleiro.serpro.gov.br/design-system/images/logo-negative.png",
+      required: true,
+      default: "https://cdn.dsgovserprodesign.estaleiro.serpro.gov.br/design-system/images/logo-negative.png"
     },
     redesSociais: {
       id: {

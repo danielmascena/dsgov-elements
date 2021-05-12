@@ -35,7 +35,7 @@
       <app-list :items="['item 1', 'item 2', 'item 3']"></app-list>
       <AppNav />
     </div>
-    <AppFooter :categorias="categorias" :logo="logoFooter" :redesSociais="redesSociais" />
+    <AppFooter :categorias="categorias" :logo="logoFooter" :redesSociais="redesSociais" :textoRodape="textoRodape" :imagensRodape="imagensRodape" />
   </div>
 </template>
 
@@ -66,6 +66,17 @@ export default {
   data() {
     return {
       logoFooter: "https://dataprev.gov.br/imagens/marcaDataprev_.png",
+      textoRodape: "Texto Rodape",
+      imagensRodape: [
+        { 
+          id: 1,
+          src: "https://cdn.dsgovserprodesign.estaleiro.serpro.gov.br/design-system/images/logo-assign-negative.png"
+        },
+        { 
+          id: 2,
+          src: "https://cdn.dsgovserprodesign.estaleiro.serpro.gov.br/design-system/images/logo-assign-negative.png"
+        }
+      ],
       redesSociais:[
         {
           id: 1,
