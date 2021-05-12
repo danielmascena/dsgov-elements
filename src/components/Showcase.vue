@@ -32,7 +32,7 @@
             <app-list :items="['item 1', 'item 2', 'item 3']"></app-list>
             <AppNav />
         </div>
-        <AppFooter />
+        <AppFooter logo="https://dataprev.gov.br/imagens/marcaDataprev_.png" />
     </div>
 </template>
 

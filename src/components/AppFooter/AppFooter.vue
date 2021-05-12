@@ -2,7 +2,7 @@
   <footer :class="{ 'br-footer': true, 'inverted': inverted }">
     <div class="container-lg">
       <div class="logo">
-        <img src="https://cdn.dsgovserprodesign.estaleiro.serpro.gov.br/design-system/images/logo-negative.png" alt="Imagem" />
+        <img :src="logo" alt="Logo footer" />
       </div>
 
       <div class="br-list horizontal" data-toggle="data-toggle" data-unique="data-unique">
@@ -74,6 +74,10 @@ export default {
       type: Boolean,
       default: false
     },
+    logo: {
+      type: String,
+      default: "https://cdn.dsgovserprodesign.estaleiro.serpro.gov.br/design-system/images/logo-negative.png"
+    }
   },
   data() {
     return {
