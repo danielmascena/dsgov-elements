@@ -46,6 +46,8 @@ import AppList from './AppList';
 import AppNav from './AppNav';
 import AppFooter from './AppFooter/AppFooter';
 
+import "../../node_modules/@govbr/dsgov/dist/dsgov-base.css";
+
 export default {
     name: 'Showcase',
     components: {
