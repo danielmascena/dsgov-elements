@@ -77,31 +77,10 @@ export default {
     logo: {
       type: String,
       default: "https://cdn.dsgovserprodesign.estaleiro.serpro.gov.br/design-system/images/logo-negative.png"
+    },
+    categorias: {
+      type: Array
     }
-  },
-  data() {
-    return {
-      categorias: [
-        {
-          id: 1,
-          header: "categoria1",
-          itensCategorias: [
-            { id: 1, label: "10 party hats", href: "http://www.google.com" },
-            { id: 2, label: "2 board games", href: "http://www.youtube.com" },
-            { id: 3, label: "20 cups", href: "http://www.gmail.com" },
-          ],
-        },
-        {
-          id: 2,
-          header: "categoria2",
-          itensCategorias: [
-            { id: 4, label: "101 party hats", href: "http://www.google.com" },
-            { id: 5, label: "20 board games", href: "http://www.youtube.com" },
-            { id: 6, label: "201 cups", href: "http://www.gmail.com" },
-          ],
-        },
-      ],
-    };
-  },
+  }
 };
 </script>
