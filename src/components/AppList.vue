@@ -14,12 +14,15 @@ export default {
     name: "AppList",
     props: {
         items: Object,
-        isExpanded: Boolean
+        isExpanded: Boolean,
+        listClosed: Boolean,
     },
     data() {
+        const menuList = Array.isArray(this.items) ? {'' : this.items} : this.items;
+        const currentSubmenu = this.listClosed ? null : Object.keys(menuList)[0];
         return {
-            menuList : Array.isArray(this.items) ? {'' : this.items} : this.items,
-            currentSubmenu: null
+            menuList,
+            currentSubmenu
         }
     }
 }

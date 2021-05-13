@@ -1,6 +1,6 @@
 <template>
     <nav>
-        <AppList :items="navbar" isExpanded />
+        <AppList :items="navbar" isExpanded listClosed />
     </nav>
 </template>
 
