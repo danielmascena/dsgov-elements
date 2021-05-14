@@ -33,7 +33,7 @@
             </a>
           </div>
           <div class="col assigns text-right">
-            <img class="ml-4" v-for="img in imagensRodape" :key="img.id" :src="img.src" alt="Imagem" />
+            <img class="ml-4" v-for="img in imagensRodape" :style="img.style" :key="img.id" :src="img.src" alt="Imagem" />
           </div>
         </div>
       </div>
@@ -69,7 +69,11 @@ export default {
         src: {
           type: String,
           required: true,
-        }        
+        },
+        style: {
+          type: Object,
+          required: true,
+        },
     },
     textoRodape:{
       type: String,
