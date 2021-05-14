@@ -1,6 +1,6 @@
 <template>
     <nav>
-        <AppList :items="navbar" />
+        <AppList :items="navbar" isExpanded listClosed />
     </nav>
 </template>
 
@@ -14,7 +14,7 @@ export default {
     },
     data() {
         return {
-            navbar: ['item 1', 'item 2', 'item 3']
+            navbar: {label1: ['item 1', 'item 2', 'item 3'], label2: ['item 1', 'item 2', 'item 3'], label3: ['item 1', 'item 2', 'item 3']}
         }
     }
 }
