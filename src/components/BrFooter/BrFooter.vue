@@ -44,7 +44,7 @@
 </template>
 
 <script>
-import "../../../node_modules/@govbr/dsgov/dist/components/footer/footer.css";
+import "@govbr/dsgov/dist/components/footer/footer.css";
 
 export default {
   name: "BrFooter",
