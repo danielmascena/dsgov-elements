@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import AppList from './AppList';
+import AppList from '../AppList';
 
 export default {
     name: "AppNav",

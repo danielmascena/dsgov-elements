@@ -19,7 +19,7 @@
 
 <script>
 
-import AppButton from './AppButton';
+import AppButton from '../AppButton';
 
 export default {
     name: "AppCard",
