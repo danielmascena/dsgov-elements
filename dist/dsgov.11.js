@@ -39,12 +39,12 @@ module.exports = exports;
 // ESM COMPAT FLAG
 __webpack_require__.r(__webpack_exports__);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"6171a81c-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/BrFooter/BrFooter.vue?vue&type=template&id=54afdb1a&shadow
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"6171a81c-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/BrFooter/BrFooter.vue?vue&type=template&id=22817050&shadow
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('footer',{class:{ 'br-footer': true, inverted: _vm.inverted }},[_c('div',{staticClass:"container-lg"},[_c('div',{class:{ logo: true, 'text-center': _vm.logoCentered }},[_c('img',{attrs:{"src":_vm.logo,"alt":"Logo footer"}})]),_c('div',{staticClass:"br-list horizontal",attrs:{"data-toggle":"data-toggle","data-unique":"data-unique"}},[_c('div',{staticClass:"col-2"},[_vm._t("categoria-1")],2),_c('div',{staticClass:"col-2"},[_vm._t("categoria-2")],2),_c('div',{staticClass:"col-2"},[_vm._t("categoria-3")],2),_c('div',{staticClass:"col-2"},[_vm._t("categoria-4")],2),_c('div',{staticClass:"col-2"},[_vm._t("categoria-5")],2),_c('div',{staticClass:"col-2"},[_vm._t("categoria-6")],2)]),_c('div',{staticClass:"d-none d-sm-block"},[_c('div',{staticClass:"row align-items-end justify-content-between py-5"},[_vm._t("redes-sociais"),_c('div',{staticClass:"col assigns text-right"},[_vm._t("images")],2)],2)])]),_c('span',{staticClass:"br-divider my-3"}),_c('div',{staticClass:"container-lg"},[_c('div',{staticClass:"info"},[_c('div',{staticClass:"text-down-01 text-medium pb-3 text-center"},[_vm._v(_vm._s(_vm.texto))])])])])}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/BrFooter/BrFooter.vue?vue&type=template&id=54afdb1a&shadow
+// CONCATENATED MODULE: ./src/components/BrFooter/BrFooter.vue?vue&type=template&id=22817050&shadow
 
 // EXTERNAL MODULE: ./node_modules/@govbr/dsgov/dist/components/footer/footer.css
 var footer = __webpack_require__("73cb");

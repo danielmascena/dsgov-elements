@@ -50,5 +50,5 @@ const BrButton = {
 export default BrButton;
 </script>
 <style scoped>
-@import "../../../node_modules/@govbr/dsgov/dist/components/breadcrumb/breadcrumb.css";
+@import url("../../../node_modules/@govbr/dsgov/dist/components/breadcrumb/breadcrumb.css");
 </style>
