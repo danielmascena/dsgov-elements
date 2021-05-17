@@ -6,7 +6,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "build:wc": "vue-cli-service build --target wc --inline-vue --name dsgov 'src/components/**/*.vue'"
+    "build:wc": "vue-cli-service build --target wc-async --inline-vue --name dsgov 'src/components/**/*.vue'"
   },
   "dependencies": {
     "@govbr/dsgov": "file:dsgov-latest.tgz",
