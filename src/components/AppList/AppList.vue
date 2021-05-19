@@ -1,9 +1,14 @@
 <template>
     <div>
-        <section v-for="(list, key) in menuList" :key="key+list.length">
-            <h2>{{key}} <input type="button" v-show="isExpanded" @click="currentSubmenu = key" class="toggle-btn" value=">" /></h2>
-            <ul class="list" v-show="currentSubmenu === key">
-                <li class="list-item" v-for="(item, index) in list" :key="item+index">{{item}}</li>
+        <section v-for="(list, key) in menuList" :key="key+list.length" class="list-container" :class="{divider: withDivision}">
+            <h2 class="list-heading">
+                <span class="list-heading__text">{{key}}</span>
+                <button v-show="isExpansible" @click="toggleList(key)" class="list-heading__toggle-btn">
+                    <i class="fas fa-angle-down" :class="{'upside-down': currentSubmenu === key}" aria-hidden="true"></i>
+                </button>
+            </h2>
+            <ul class="list-menu" v-show="currentSubmenu === key">
+                <li class="list-menu__item" v-for="(item, index) in list" :key="item+index">{{item}}</li>
             </ul>
         </section>
     </div>
@@ -14,8 +19,9 @@ export default {
     name: "AppList",
     props: {
         items: Object,
-        isExpanded: Boolean,
+        isExpansible: Boolean,
         listClosed: Boolean,
+        withDivision: Boolean
     },
     data() {
         const menuList = Array.isArray(this.items) ? {'' : this.items} : this.items;
@@ -24,32 +30,66 @@ export default {
             menuList,
             currentSubmenu
         }
-    }
+    },
+    methods: {
+        toggleList(key) {
+            this.currentSubmenu = this.currentSubmenu === key ? null : key;
+        }
+    },
 }
 </script>
 
 <style scoped>
-.list {
+.list-container.divider {
+    border-bottom: 1px solid;
+}
+.list-container.divider:first-of-type {
+    border-top: 1px solid;
+}
+.list-menu {
     padding: 0;
     list-style-type: none;
 }
 .collapse {
     display: none;
 }
-.toggle-btn {
+.list-heading {
+    display: flex;
+    margin: 0;
+    justify-content: space-between;
+    align-items: center;
+}
+.list-heading__text {
+    font-size: 12.63px;
+}
+.list-heading__toggle-btn {
+    --color-primary-default: #1351b4;
+    --interactive: var(--color-primary-default);
+    --button-medium: 40px;
+    --button-size: var(--button-medium);
     appearance: none;
     background: none;
     cursor: pointer;
     border: none;
     border-radius: 50%;
+    height: var(--button-size);
+    width: var(--button-size);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    --button-color: var(--interactive);
+    color: var(--button-color);
 }
-.toggle-btn:hover {
-    background: #ccc;
+.list-heading__toggle-btn:hover {
+    background: lightblue;
 }
-.toggle-btn:active {
+.list-heading__toggle-btn:active {
     background: #eee;
 }
-.divider {
-    border-bottom: 1px solid;
+.list-menu__item {
+    font-size: 12.63px;
+}
+.upside-down {
+    transform: rotate(180deg);
 }
 </style>
