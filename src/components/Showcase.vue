@@ -1,48 +1,3 @@
-<script>
-import AppButton from "./AppButton/AppButton";
-import AppAvatar from "./AppAvatar/AppAvatar";
-import AppCard from "./AppCard/AppCard";
-import AppTab from "./AppTab/AppTab";
-import AppLoading from "./AppLoading/AppLoading";
-import AppList from "./AppList/AppList";
-import AppNav from "./AppNav/AppNav";
-import BrFooter from "./BrFooter/BrFooter";
-import BrFooterList from "./BrFooter/BrFooterList";
-import BrFooterListItem from "./BrFooter/BrFooterListItem";
-import BrFooterRedesSociais from "./BrFooter/BrFooterRedesSociais";
-import BrFooterRedesSociaisItem from "./BrFooter/BrFooterRedesSociaisItem";
-import BrBreadcrumb from "./Breadcrumb/Breadcrumb";
-
-export default {
-  name: "Showcase",
-  components: {
-    AppButton,
-    AppAvatar,
-    AppCard,
-    AppTab,
-    AppLoading,
-    AppList,
-    AppNav,
-    BrFooter,
-    BrFooterList,
-    BrFooterListItem,
-    BrFooterRedesSociais,
-    BrFooterRedesSociaisItem,
-    BrBreadcrumb
-  }
-};
-</script>
-
-<style>
-.centered {
-  max-width: 50%;
-  margin: auto;
-}
-.button-group {
-  display: flex;
-  justify-content: center;
-}
-</style>
 
 <template>
   <div>
@@ -51,7 +6,7 @@ export default {
       <AppButton label="Hello" />
       <AppButton label="Primary" type="filled" />
       <AppButton label="Secondary" type="outlined" />
-      <app-button>
+      <app-button rounded>
         <span slot="button-icon">&#8855;</span>
       </app-button>
     </div>
@@ -161,3 +116,49 @@ export default {
     </br-footer>
   </div>
 </template>
+
+<script>
+import AppButton from "./AppButton/AppButton";
+import AppAvatar from "./AppAvatar/AppAvatar";
+import AppCard from "./AppCard/AppCard";
+import AppTab from "./AppTab/AppTab";
+import AppLoading from "./AppLoading/AppLoading";
+import AppList from "./AppList/AppList";
+import AppNav from "./AppNav/AppNav";
+import BrFooter from "./BrFooter/BrFooter";
+import BrFooterList from "./BrFooter/BrFooterList";
+import BrFooterListItem from "./BrFooter/BrFooterListItem";
+import BrFooterRedesSociais from "./BrFooter/BrFooterRedesSociais";
+import BrFooterRedesSociaisItem from "./BrFooter/BrFooterRedesSociaisItem";
+import BrBreadcrumb from "./Breadcrumb/Breadcrumb";
+
+export default {
+  name: "Showcase",
+  components: {
+    AppButton,
+    AppAvatar,
+    AppCard,
+    AppTab,
+    AppLoading,
+    AppList,
+    AppNav,
+    BrFooter,
+    BrFooterList,
+    BrFooterListItem,
+    BrFooterRedesSociais,
+    BrFooterRedesSociaisItem,
+    BrBreadcrumb
+  }
+};
+</script>
+
+<style>
+.centered {
+  max-width: 50%;
+  margin: auto;
+}
+.button-group {
+  display: flex;
+  justify-content: center;
+}
+</style>
