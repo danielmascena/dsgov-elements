@@ -4,14 +4,14 @@
       <header class="card-header">
         <slot name="header"></slot>
         <aside v-if="isFullCard" class="card-side-button">
-          <app-button
-            ><span
+          <app-button circle>
+            <span
               slot="button-icon"
               class="btn-icon"
-              style="transform: rotate(90deg); font-size: .5em"
-              >{{ "&#9900;".repeat(3) }}</span
-            ></app-button
-          >
+              style="transform: rotate(90deg); font-size: .5em">
+              {{ "&#9900;".repeat(3) }}
+            </span>
+          </app-button>
         </aside>
       </header>
       <section class="card-content">

@@ -6,7 +6,7 @@
       <AppButton label="Hello" />
       <AppButton label="Primary" type="filled" />
       <AppButton label="Secondary" type="outlined" />
-      <app-button rounded>
+      <app-button circle>
         <span slot="button-icon">&#8855;</span>
       </app-button>
     </div>

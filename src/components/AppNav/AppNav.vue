@@ -1,7 +1,7 @@
 <template>
   <div class="menu">
     <div class="menu-trigger">
-      <app-button>
+      <app-button circle>
         <span slot="button-icon">
           <i class="fas fa-bars" aria-hidden="true"></i>
         </span>

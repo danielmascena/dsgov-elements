@@ -1,6 +1,6 @@
 <template>
     <div class="button-container">
-        <button class="default" :class="{primary: type === 'filled', secondary: type === 'outlined', rounded}" @click="activateLoad()" aria-label="">
+        <button class="default" :class="{primary: type === 'filled', secondary: type === 'outlined', circle}" @click="activateLoad()" aria-label="">
            <span v-if="isLoading" class="loading-container">
             <span class="loading-icon"></span>
             <span class="ghost-text">{{label}}</span>
@@ -40,7 +40,7 @@ export default {
         },
         isDisabled: Boolean,
         isBlock: Boolean,
-        rounded: Boolean
+        circle: Boolean
     },
     data() {
         return {
@@ -74,9 +74,12 @@ button {
     --button-size: var(--button-medium);
 }
 
-.rounded {
+.circle {
     border-radius: 50%;
     width: 38px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .default {
@@ -91,9 +94,6 @@ button {
     height: 38px;
     margin: 2px;
     font-weight: 600;
-}
-.default.is-icon {
-    border-radius: 50%;
 }
 
 .default:focus {
