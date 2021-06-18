@@ -40,7 +40,7 @@ export default {
         },
         isDisabled: Boolean,
         isBlock: Boolean,
-        circle: Boolean
+        circle: Boolean,
     },
     data() {
         return {
@@ -51,7 +51,10 @@ export default {
         activateLoad() {
             this.isLoading = true;
             // trigger the loading to emulate a action occurring
-            setTimeout(() => this.isLoading = false, 1000);
+            setTimeout(() => {
+                this.isLoading = false;
+                this.$emit('activated');
+            }, 1000);
         }
     }
 }

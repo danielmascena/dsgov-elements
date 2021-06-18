@@ -34,12 +34,47 @@
           <AppButton label="Button" />
         </div>
       </AppCard>
+
       <app-tab></app-tab>
+
       <app-list :items="['item 1', 'item 2', 'item 3']"></app-list>
-      <AppNav />
+
+      <app-nav :menuList="{
+        'menu group 1': [
+          'menu item 1',
+          {
+            'menu item ': [
+              'submenu item 1',
+              'submenu item 1',
+              'submenu item 1'
+            ]
+          },
+          'menu item'
+        ],
+        'menu group 2': [
+          'menu item 2',
+          {
+            'menu item ': [
+              'submenu item 2',
+              'submenu item 2',
+              'submenu item 2'
+            ]
+          },
+          'menu item'
+        ]
+      }">        
+        <AppList 
+          slot="menu-addons" 
+          :items="['item 11', 'item 21', 'item 31']"
+          withDivision
+          withSeparator
+        />
+      </app-nav>
+
       <br />
       <br-breadcrumb />
     </div>
+
     <br-footer
       logo="https://www.gov.br/++theme++padrao_govbr/img/govbr.png"
       texto="Todo o conteúdo deste site está publicado sob a licença Creative Commons"
