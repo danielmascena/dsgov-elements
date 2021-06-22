@@ -1,7 +1,7 @@
 <template>
     <div class="button-container">
         <button class="default" :class="{primary: type === 'filled', secondary: type === 'outlined', circle}" @click="activateLoad()" aria-label="">
-           <span v-if="isLoading" class="loading-container">
+           <span v-if="isLoading && useload" class="loading-container">
             <span class="loading-icon"></span>
             <span class="ghost-text">{{label}}</span>
            </span> 
@@ -41,6 +41,7 @@ export default {
         isDisabled: Boolean,
         isBlock: Boolean,
         circle: Boolean,
+        useload: Boolean
     },
     data() {
         return {
@@ -49,6 +50,10 @@ export default {
     },
     methods: {
         activateLoad() {
+            if (!this.useload) {
+                this.$emit('activated');
+                return;
+            }
             this.isLoading = true;
             // trigger the loading to emulate a action occurring
             setTimeout(() => {

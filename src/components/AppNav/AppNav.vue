@@ -1,6 +1,6 @@
 <template>
   <div class="menu">
-    <div class="menu-trigger">
+    <div class="menu-button">
       <app-button circle @activated="toggleMenu">
         <span slot="button-icon">
           <i class="fas" :class="{'fa-times' : displayMenu, 'fa-bars' : !displayMenu}" aria-hidden="true"></i>
@@ -9,17 +9,17 @@
     </div>
     <div class="menu-container" v-show="displayMenu">
 
-      <nav class="menu">
-        <section v-for="(list, key) in menuList" :key="key+list.length">
-            <div class="list-heading">
-              <span class="list-heading__text">{{key}}</span>
-              <button v-show="Array.isArray(list) && list.length > 1" @click="activateSubmenu(list)" class="list-heading__toggle-btn">
-                <i class="fas fa-angle-down" :class="{'upside-down': shouldDisplay(list)}" aria-hidden="true"></i>
+      <nav class="menu-container__content">
+        <section v-for="(list, key) in menu" :key="key+list.length">
+            <div class="menu-container__content-list">
+              <span>{{key}}</span>
+              <button v-show="Array.isArray(list) && list.length > 1" @click="activateSubmenu(list)" class="menu-container__content-list__collapse">
+                <i class="fas fa-angle-down" :class="{'upside-down': list.display}" aria-hidden="true"></i>
               </button>
             </div>
-            <ul class="list-menu" v-show="shouldDisplay(list)">
+            <ul v-show="list.display" class="menu-container__content-main">
               <li v-for="(item, index) in list" :key="item+index">
-                <AppSubMenu v-if="typeof item === 'object'" :list="item" />
+                <AppSubMenu v-if="typeof item === 'object'" :submenu="item" />
                 <span v-else>{{item}}</span>
               </li>
             </ul>
@@ -50,6 +50,7 @@ export default {
   data() {
     return {
       displayMenu: this.showMenu,
+      menu: this.menuList 
     };
   },
   methods: {
@@ -57,23 +58,44 @@ export default {
       this.displayMenu = !this.displayMenu;
     },
     activateSubmenu(list) {
-      console.log({list});
-      //list.display = !list.display;
-    },
-    shouldDisplay(list) {
-
-      console.log({list});
-      //this.$set(list, index, false);
-      return Boolean(list);
+      this.$set(list, 'display', !list.display);
     }
   },
-  watch: {
-    
-  }
 };
 </script>
 
 <style scoped>
-
+.menu-container__content-main {
+  list-style-type: none;
+}
+.menu-container__content-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.menu-container__content-list__collapse {
+    --color-primary-default: #1351b4;
+    --button-medium: 40px;
+    --interactive: var(--color-primary-default);
+    --button-size: var(--button-medium);
+    --button-color: var(--interactive);
+    height: var(--button-size);
+    width: var(--button-size);
+    color: var(--button-color);
+    appearance: none;
+    background: none;
+    cursor: pointer;
+    border: none;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.menu-container__content-list:hover {
+    background-image: linear-gradient(rgba(19, 81, 180, 0.16), rgba(19, 81, 180, 0.16));
+}
+.menu-container__content-list:active {
+    background-image: linear-gradient(rgba(19, 81, 180, 0.45), rgba(19, 81, 180, 0.45));
+}
 
 </style>

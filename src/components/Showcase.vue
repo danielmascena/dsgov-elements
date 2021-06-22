@@ -4,8 +4,8 @@
     <AppLoading />
     <div class="button-group">
       <AppButton label="Hello" />
-      <AppButton label="Primary" type="filled" />
-      <AppButton label="Secondary" type="outlined" />
+      <AppButton label="Primary" useload type="filled" />
+      <AppButton label="Secondary" useload type="outlined" />
       <app-button circle>
         <span slot="button-icon">&#8855;</span>
       </app-button>
@@ -43,7 +43,8 @@
         'menu group 1': [
           'menu item 1',
           {
-            'menu item ': [
+            text: 'menu item ',
+            list: [
               'submenu item 1',
               'submenu item 1',
               'submenu item 1'
@@ -54,7 +55,8 @@
         'menu group 2': [
           'menu item 2',
           {
-            'menu item ': [
+            text: 'menu item ',
+            list: [
               'submenu item 2',
               'submenu item 2',
               'submenu item 2'

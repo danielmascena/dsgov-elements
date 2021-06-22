@@ -60,21 +60,21 @@ export default {
 }
 .list-heading__toggle-btn {
     --color-primary-default: #1351b4;
-    --interactive: var(--color-primary-default);
     --button-medium: 40px;
+    --interactive: var(--color-primary-default);
     --button-size: var(--button-medium);
+    --button-color: var(--interactive);
+    color: var(--button-color);
+    height: var(--button-size);
+    width: var(--button-size);
     appearance: none;
     background: none;
     cursor: pointer;
     border: none;
     border-radius: 50%;
-    height: var(--button-size);
-    width: var(--button-size);
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    --button-color: var(--interactive);
-    color: var(--button-color);
 }
 .list-heading__toggle-btn:hover {
     background: lightblue;
