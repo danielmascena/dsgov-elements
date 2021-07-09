@@ -1,5 +1,5 @@
 <template>
-  <div class="menu">
+  <div class="menu" @click.capture="log">
     <div class="menu-button">
       <app-button circle @activated="toggleMenu">
         <span slot="button-icon">
@@ -11,22 +11,24 @@
 
       <nav class="menu-container__content">
         <section v-for="(list, key) in menu" :key="key+list.length">
-            <div class="menu-container__content-list">
+            <div class="menu-container__content-list" @click.capture="activateSubmenu(list)">
               <span>{{key}}</span>
-              <button v-show="Array.isArray(list) && list.length > 1" @click="activateSubmenu(list)" class="menu-container__content-list__collapse">
-                <i class="fas fa-angle-down" :class="{'upside-down': list.display}" aria-hidden="true"></i>
+              <button v-show="Array.isArray(list) && list.length > 1" class="menu-container__content-list__collapse">
+                <i class="fas" :class="{'fa-angle-up': list.display, 'fa-angle-down': !list.display}" aria-hidden="true"></i>
               </button>
             </div>
             <ul v-show="list.display" class="menu-container__content-main">
               <li v-for="(item, index) in list" :key="item+index">
-                <AppSubMenu v-if="typeof item === 'object'" :submenu="item" />
+                <AppSubMenu v-if="typeof item === 'object'"
+                  :submenu="item"
+                />
                 <span v-else>{{item}}</span>
               </li>
             </ul>
         </section>
       </nav>
 
-      <aside class="sidebar"> 
+      <aside class="sidebar">
         <slot name="menu-addons"></slot>
       </aside>
     </div>
@@ -50,7 +52,7 @@ export default {
   data() {
     return {
       displayMenu: this.showMenu,
-      menu: this.menuList 
+      menu: this.menuList
     };
   },
   methods: {
@@ -59,19 +61,37 @@ export default {
     },
     activateSubmenu(list) {
       this.$set(list, 'display', !list.display);
+    },
+    log($event) {
+      if ($event.target.matches('.menu-container *')) {
+        this.$el.classList.add('hide-list');
+        $event.target.parentElement.classList.add('show-list');
+      }
+      console.log('component menu', $event.target, $event);
     }
   },
 };
 </script>
 
 <style scoped>
+.menu.hide-list {
+  position: relative;
+  overflow: auto;
+  height: 100px;
+
+}
+.menu.hide-list .menu-container__content * {
+  color: blue;
+}
 .menu-container__content-main {
   list-style-type: none;
+    padding: 0;
 }
 .menu-container__content-list {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  cursor: pointer;
 }
 .menu-container__content-list__collapse {
     --color-primary-default: #1351b4;
@@ -84,7 +104,6 @@ export default {
     color: var(--button-color);
     appearance: none;
     background: none;
-    cursor: pointer;
     border: none;
     border-radius: 50%;
     display: inline-flex;

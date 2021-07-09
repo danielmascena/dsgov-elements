@@ -1,13 +1,19 @@
 <template>
     <div class="submenu-container">
-        <p>
+        <p class="submenu-container__legend" @click="toggleSubmenu()">
             <span>{{text}}</span>
-            <button @click="toggleSubmenu()" class="submenu-container__collapse">
-                <i class="fas fa-angle-down" :class="{'upside-down': display}" aria-hidden="true"></i>
-            </button>
+            <i
+              class="submenu-container__legend_collapse fas"
+              :class="{'fa-angle-left': display, 'fa-angle-right': !display}"
+              aria-hidden="true"></i>
         </p>
-        <ul v-show='display'>
-            <li v-for="(item, index) in list" :key="index">{{item}}</li>
+        <ul v-show='display' class="submenu-cotainer__list">
+            <li v-for="(item, index) in list" :key="index" :id="getComponentId+'-'+index">
+                <AppSubMenu v-if="typeof item === 'object'"
+                  :submenu="item"
+                />
+                <span v-else>{{item}}</span>
+            </li>
         </ul>
     </div>
 </template>
@@ -16,7 +22,7 @@
 export default {
     name: 'AppSubMenu',
     props: {
-        submenu: Object
+        submenu: Object,
     },
     data() {
         const {text, list} = this.submenu;
@@ -26,47 +32,58 @@ export default {
             display: false
         };
     },
+    computed: {
+      getComponentId() {
+        return this.$vnode.tag;
+        //return this._uid;
+      }
+    },
     methods: {
         toggleSubmenu() {
             this.display = !this.display;
+            console.log(this)
         }
     }
-
 }
 </script>
 
 <style scoped>
+.show-list{
+  color: green;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: white;
+}
+.show-list * {
+  display: unset;
+}
+
+.submenu-cotainer__list {
+    list-style-type: none;
+    padding: 0;
+}
 .submenu-container {
     display: flex;
     justify-content: space-between;
-    align-items: center;
     flex-direction: column;
+    padding: 10px;
 }
-.submenu-container__collapse {
-    --color-primary-default: #1351b4;
-    --button-medium: 40px;
-    --interactive: var(--color-primary-default);
-    --button-size: var(--button-medium);
-    --button-color: var(--interactive);
-    height: var(--button-size);
-    width: var(--button-size);
-    color: var(--button-color);
-    appearance: none;
-    background: none;
+.submenu-container__legend {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
     cursor: pointer;
-    border: none;
-    border-radius: 50%;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+    margin: 0;
+}
+.submenu-container__legend_collapse {
+    --color-primary-default: #1351b4;
+    color: var(--color-primary-default);
 }
 .submenu-container:hover {
     background-image: linear-gradient(rgba(19, 81, 180, 0.16), rgba(19, 81, 180, 0.16));
 }
 .submenu-container:active {
     background-image: linear-gradient(rgba(19, 81, 180, 0.45), rgba(19, 81, 180, 0.45));
-}
-ul {
-    list-style-type: none;
 }
 </style>

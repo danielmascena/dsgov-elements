@@ -58,7 +58,21 @@
             text: 'menu item ',
             list: [
               'submenu item 2',
-              'submenu item 2',
+              {
+                text: 'submenu item 2',
+                list: [
+                  'child submenu item 2',
+                  {
+                    text: 'child submenu item 2',
+                    list: [
+                      'last level',
+                      'last level',
+                      'last level',
+                    ]
+                  },
+                  'child submenu item 2'
+                ]  
+              },
               'submenu item 2'
             ]
           },
