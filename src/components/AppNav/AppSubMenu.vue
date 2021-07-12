@@ -48,27 +48,19 @@ export default {
 </script>
 
 <style scoped>
-.show-list{
-  color: green;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background: white;
-}
-.show-list * {
-  display: unset;
-}
 
-.submenu-cotainer__list {
+.submenu-container__list {
     list-style-type: none;
     padding: 0;
 }
+
 .submenu-container {
     display: flex;
     justify-content: space-between;
     flex-direction: column;
     padding: 10px;
 }
+
 .submenu-container__legend {
     display: flex;
     justify-content: space-between;
@@ -76,13 +68,16 @@ export default {
     cursor: pointer;
     margin: 0;
 }
+
 .submenu-container__legend_collapse {
     --color-primary-default: #1351b4;
     color: var(--color-primary-default);
 }
+
 .submenu-container:hover {
     background-image: linear-gradient(rgba(19, 81, 180, 0.16), rgba(19, 81, 180, 0.16));
 }
+
 .submenu-container:active {
     background-image: linear-gradient(rgba(19, 81, 180, 0.45), rgba(19, 81, 180, 0.45));
 }

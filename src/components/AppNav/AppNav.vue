@@ -10,7 +10,7 @@
     <div class="menu-container" v-show="displayMenu">
 
       <nav class="menu-container__content">
-        <section v-for="(list, key) in menu" :key="key+list.length">
+        <section v-for="(list, key) in menu" :key="key+list.length" class="menu-container__content-section">
             <div class="menu-container__content-list" @click.capture="activateSubmenu(list)">
               <span>{{key}}</span>
               <button v-show="Array.isArray(list) && list.length > 1" class="menu-container__content-list__collapse">
@@ -74,25 +74,51 @@ export default {
 </script>
 
 <style scoped>
+
 .menu.hide-list {
   position: relative;
+  height: 200px;
   overflow: auto;
-  height: 100px;
-
 }
-.menu.hide-list .menu-container__content * {
+
+.menu.hide-list .menu-container,
+.menu.hide-list .menu-container__content,
+.menu.hide-list .menu-container__content-section {
   color: blue;
+  display: block !important;
+}
+
+.menu.hide-list .show-list {
+  color: green;
+  top: 0;
+  left: 0;
+  background: white;
+  /*
+  width: 100%;
+  position: absolute;
+  display: block;
+  */
+}
+
+.menu.hide-list :not(.show-list) {
+  color: red;
+  display: none;
+}
+.menu.hide-list .show-list * {
+  display: flex;
 }
 .menu-container__content-main {
   list-style-type: none;
     padding: 0;
 }
+
 .menu-container__content-list {
   display: flex;
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
 }
+
 .menu-container__content-list__collapse {
     --color-primary-default: #1351b4;
     --button-medium: 40px;
@@ -110,9 +136,11 @@ export default {
     align-items: center;
     justify-content: center;
 }
+
 .menu-container__content-list:hover {
     background-image: linear-gradient(rgba(19, 81, 180, 0.16), rgba(19, 81, 180, 0.16));
 }
+
 .menu-container__content-list:active {
     background-image: linear-gradient(rgba(19, 81, 180, 0.45), rgba(19, 81, 180, 0.45));
 }
