@@ -41,7 +41,6 @@ export default {
     methods: {
         toggleSubmenu() {
             this.display = !this.display;
-            console.log(this)
         }
     }
 }

@@ -36,8 +36,15 @@
 </template>
 
 <script>
+
 import AppButton from '../AppButton/AppButton';
 import AppSubMenu from './AppSubMenu.vue';
+
+const SELECTED_CLASS = 'selected-submenu';
+const CLOSE_UP_CLASS = 'closeup-mode';
+const MENU_CLASS = 'menu-container__content-section';
+
+const selectedElements = [];
 
 export default {
   name: "AppNav",
@@ -62,33 +69,66 @@ export default {
     activateSubmenu(list) {
       this.$set(list, 'display', !list.display);
     },
-    log($event) {
-      if ($event.target.matches('.menu-container *')) {
-        this.$el.classList.add('hide-list');
-        $event.target.parentElement.classList.add('show-list');
+    log({target}) {
+      const len = selectedElements.length;
+      const rowEl = target.parentElement;
+      const isInsideNavBar = target.matches('.menu-container *');
+      const isFirstLevel = rowEl.parentElement.matches(MENU_CLASS);
+      const isCloseUp = this.$el.classList.contains(CLOSE_UP_CLASS);
+
+      if (isInsideNavBar) {
+
+        const antecedentSelected = target.closest('.' + SELECTED_CLASS);
+        if (antecedentSelected && antecedentSelected.parentElement !== isFirstLevel) {
+          if (!isCloseUp) {
+            this.$el.classList.add(CLOSE_UP_CLASS);
+          }
+          if (selectedElements.length && antecedentSelected === selectedElements[len - 1]) {
+            rowEl.classList.add(SELECTED_CLASS);
+            selectedElements.push(rowEl);
+          } else if (antecedentSelected === selectedElements[len - 2]) {
+              selectedElements.pop().classList.remove(SELECTED_CLASS);
+          } else {
+            if (selectedElements.length)
+              selectedElements.pop().classList.remove(SELECTED_CLASS);
+            rowEl.classList.add(SELECTED_CLASS);
+            selectedElements.push(rowEl);
+          }
+        }
+
+        console.log(antecedentSelected, target);
+        /*
+        if (parentMenu) {
+          const parent = parentMenu.closest('.submenu-container');
+          console.log(parent)
+          parent.classList.add(SELECTED_CLASS);
+          parentMenu.classList.remove(SELECTED_CLASS);
+        }*/
       }
-      console.log('component menu', $event.target, $event);
     }
-  },
+  }
 };
+
 </script>
 
 <style scoped>
 
-.menu.hide-list {
+.menu.closeup-mode {
   position: relative;
   height: 200px;
   overflow: auto;
 }
 
-.menu.hide-list .menu-container,
-.menu.hide-list .menu-container__content,
-.menu.hide-list .menu-container__content-section {
+.menu.closeup-mode .menu-container,
+.menu.closeup-mode .menu-container__content,
+.menu.closeup-mode .menu-container__content-section,
+.selected-submenu * {
   color: blue;
-  display: block !important;
 }
 
-.menu.hide-list .show-list {
+.menu.closeup-mode .selected-submenu,
+.menu.closeup-mode .selected-submenu *,
+.menu.closeup-mode .selected-submenu * * {
   color: green;
   top: 0;
   left: 0;
@@ -100,12 +140,13 @@ export default {
   */
 }
 
-.menu.hide-list :not(.show-list) {
+.menu.closeup-mode .submenu-container :not(.selected-submenu) {
   color: red;
-  display: none;
+  /*display: none;*/
+  height: 0;
 }
-.menu.hide-list .show-list * {
-  display: flex;
+.menu.closeup-mode .selected-submenu * {
+  /*display: flex;*/
 }
 .menu-container__content-main {
   list-style-type: none;
