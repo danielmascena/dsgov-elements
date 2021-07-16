@@ -7,12 +7,12 @@
               :class="{'fa-angle-left': display, 'fa-angle-right': !display}"
               aria-hidden="true"></i>
         </p>
-        <ul v-show='display' class="submenu-cotainer__list">
-            <li v-for="(item, index) in list" :key="index" :id="getComponentId+'-'+index">
+        <ul v-show='display' class="submenu-container__list">
+            <li v-for="(item, index) in list" :key="index" :id="getComponentId+'-'+index" class="submenu-container__list-row">
                 <AppSubMenu v-if="typeof item === 'object'"
                   :submenu="item"
                 />
-                <span v-else>{{item}}</span>
+                <span class="submenu-container__list-legend" v-else>{{item}}</span>
             </li>
         </ul>
     </div>
@@ -48,24 +48,40 @@ export default {
 
 <style scoped>
 
-.submenu-container__list {
-    list-style-type: none;
-    padding: 0;
-}
-
 .submenu-container {
     display: flex;
     justify-content: space-between;
     flex-direction: column;
-    padding: 10px;
 }
 
+.submenu-container.selected-submenu {
+  color: green;
+  background: white;
+  position: absolute;
+  width: 100%;
+  height: 200px;
+  top: 0;
+  left: 0;
+}
+
+.submenu-container__list-legend,
 .submenu-container__legend {
     display: flex;
     justify-content: space-between;
     align-content: center;
     cursor: pointer;
     margin: 0;
+    padding: 16px;
+}
+
+.submenu-container__legend:hover,
+.submenu-container__list-legend:hover {
+    background-image: linear-gradient(rgba(19, 81, 180, 0.45), rgba(19, 81, 180, 0.45));
+}
+
+.submenu-container__legend:active,
+.submenu-container__list-legend:active {
+    background-image: linear-gradient(rgba(19, 81, 180, 0.16), rgba(19, 81, 180, 0.16));
 }
 
 .submenu-container__legend_collapse {
@@ -73,11 +89,11 @@ export default {
     color: var(--color-primary-default);
 }
 
-.submenu-container:hover {
-    background-image: linear-gradient(rgba(19, 81, 180, 0.16), rgba(19, 81, 180, 0.16));
+.submenu-container__list {
+    list-style-type: none;
+    padding: 0;
+    flex: 1;
+    background-color: #f8f8f8;
 }
 
-.submenu-container:active {
-    background-image: linear-gradient(rgba(19, 81, 180, 0.45), rgba(19, 81, 180, 0.45));
-}
 </style>

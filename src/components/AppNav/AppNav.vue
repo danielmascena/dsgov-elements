@@ -1,5 +1,5 @@
 <template>
-  <div class="menu" @click.capture="log">
+  <div class="menu">
     <div class="menu-button">
       <app-button circle @activated="toggleMenu">
         <span slot="button-icon">
@@ -7,31 +7,31 @@
         </span>
       </app-button>
     </div>
-    <div class="menu-container" v-show="displayMenu">
+    <div class="menu-container" v-show="displayMenu" @click.capture="log">
 
       <nav class="menu-container__content">
-        <section v-for="(list, key) in menu" :key="key+list.length" class="menu-container__content-section">
-            <div class="menu-container__content-list" @click.capture="activateSubmenu(list)">
-              <span>{{key}}</span>
-              <button v-show="Array.isArray(list) && list.length > 1" class="menu-container__content-list__collapse">
-                <i class="fas" :class="{'fa-angle-up': list.display, 'fa-angle-down': !list.display}" aria-hidden="true"></i>
+        <section v-for="(list, key) in menu" :key="key+list.length" class="menu-container__row">
+            <div class="menu-container__row-label first-level" @click.capture="activateSubmenu(list)">
+              <span class="first-level">{{key}}</span>
+              <button v-show="Array.isArray(list) && list.length > 1" class="menu-container__row-label__collapse first-level">
+                <i class="first-level fas" :class="{'fa-angle-up': list.display, 'fa-angle-down': !list.display}" aria-hidden="true"></i>
               </button>
             </div>
-            <ul v-show="list.display" class="menu-container__content-main">
-              <li v-for="(item, index) in list" :key="item+index">
+            <ul v-show="list.display" class="menu-container__row-submenu">
+              <li v-for="(item, index) in list" :key="item+index" class="menu-container__row-submenu__item">
                 <AppSubMenu v-if="typeof item === 'object'"
                   :submenu="item"
                 />
-                <span v-else>{{item}}</span>
+                <span v-else class="menu-container__row-submenu__item-legend">{{item}}</span>
               </li>
             </ul>
         </section>
       </nav>
 
-      <aside class="sidebar">
-        <slot name="menu-addons"></slot>
-      </aside>
     </div>
+    <aside class="sidebar">
+      <slot name="menu-addons"></slot>
+    </aside>
   </div>
 </template>
 
@@ -42,7 +42,7 @@ import AppSubMenu from './AppSubMenu.vue';
 
 const SELECTED_CLASS = 'selected-submenu';
 const CLOSE_UP_CLASS = 'closeup-mode';
-const MENU_CLASS = 'menu-container__content-section';
+const SUBMENU_CONTAINER = 'submenu-container';
 
 const selectedElements = [];
 
@@ -70,19 +70,22 @@ export default {
       this.$set(list, 'display', !list.display);
     },
     log({target}) {
-      const len = selectedElements.length;
-      const rowEl = target.parentElement;
-      const isInsideNavBar = target.matches('.menu-container *');
-      const isFirstLevel = rowEl.parentElement.matches(MENU_CLASS);
-      const isCloseUp = this.$el.classList.contains(CLOSE_UP_CLASS);
+      const topEl = this.$el.lastElementChild;
 
-      if (isInsideNavBar) {
-
+      if (target.matches('.first-level') && topEl.classList.contains(CLOSE_UP_CLASS)) {
+        topEl.classList.remove(CLOSE_UP_CLASS);
+      } else {
+        const isCloseUp = topEl.classList.contains(CLOSE_UP_CLASS);
         const antecedentSelected = target.closest('.' + SELECTED_CLASS);
-        if (antecedentSelected && antecedentSelected.parentElement !== isFirstLevel) {
-          if (!isCloseUp) {
-            this.$el.classList.add(CLOSE_UP_CLASS);
-          }
+        const len = selectedElements.length;
+        const rowEl = target.closest('.' + SUBMENU_CONTAINER);
+
+        console.log(target);
+
+        if (!isCloseUp) {
+          topEl.classList.add(CLOSE_UP_CLASS);
+        }
+        if (antecedentSelected) {
           if (selectedElements.length && antecedentSelected === selectedElements[len - 1]) {
             rowEl.classList.add(SELECTED_CLASS);
             selectedElements.push(rowEl);
@@ -94,9 +97,10 @@ export default {
             rowEl.classList.add(SELECTED_CLASS);
             selectedElements.push(rowEl);
           }
+        } else {
+          rowEl.classList.add(SELECTED_CLASS);
+          selectedElements.push(rowEl);
         }
-
-        console.log(antecedentSelected, target);
         /*
         if (parentMenu) {
           const parent = parentMenu.closest('.submenu-container');
@@ -113,54 +117,30 @@ export default {
 
 <style scoped>
 
-.menu.closeup-mode {
+.menu-container {
   position: relative;
   height: 200px;
   overflow: auto;
 }
 
-.menu.closeup-mode .menu-container,
-.menu.closeup-mode .menu-container__content,
-.menu.closeup-mode .menu-container__content-section,
-.selected-submenu * {
-  color: blue;
+.menu-container__row-label:hover,
+.menu-container__row-submenu__item:hover {
+    background-image: linear-gradient(rgba(19, 81, 180, 0.16), rgba(19, 81, 180, 0.16));
 }
 
-.menu.closeup-mode .selected-submenu,
-.menu.closeup-mode .selected-submenu *,
-.menu.closeup-mode .selected-submenu * * {
-  color: green;
-  top: 0;
-  left: 0;
-  background: white;
-  /*
-  width: 100%;
-  position: absolute;
-  display: block;
-  */
+.menu-container__row-label:hover,
+.menu-container__row-submenu__item:active {
+    background-image: linear-gradient(rgba(19, 81, 180, 0.45), rgba(19, 81, 180, 0.45));
 }
 
-.menu.closeup-mode .submenu-container :not(.selected-submenu) {
-  color: red;
-  /*display: none;*/
-  height: 0;
-}
-.menu.closeup-mode .selected-submenu * {
-  /*display: flex;*/
-}
-.menu-container__content-main {
-  list-style-type: none;
-    padding: 0;
-}
-
-.menu-container__content-list {
+.menu-container__row-label {
   display: flex;
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
 }
 
-.menu-container__content-list__collapse {
+.menu-container__row-label__collapse {
     --color-primary-default: #1351b4;
     --button-medium: 40px;
     --interactive: var(--color-primary-default);
@@ -178,12 +158,22 @@ export default {
     justify-content: center;
 }
 
-.menu-container__content-list:hover {
+.menu-container__row-label:hover {
     background-image: linear-gradient(rgba(19, 81, 180, 0.16), rgba(19, 81, 180, 0.16));
 }
 
-.menu-container__content-list:active {
+.menu-container__row-label:active {
     background-image: linear-gradient(rgba(19, 81, 180, 0.45), rgba(19, 81, 180, 0.45));
 }
 
+.menu-container__row-submenu {
+  list-style-type: none;
+    padding: 0;
+}
+
+.menu-container__row-submenu__item-legend {
+  cursor: pointer;
+  margin: 0;
+  padding: 16px;
+}
 </style>
