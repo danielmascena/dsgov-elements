@@ -62,6 +62,7 @@ export default {
   height: 200px;
   top: 0;
   left: 0;
+  overflow: auto;
 }
 
 .submenu-container__list-legend,
@@ -93,6 +94,7 @@ export default {
     list-style-type: none;
     padding: 0;
     flex: 1;
+    margin: 0;
     background-color: #f8f8f8;
 }
 

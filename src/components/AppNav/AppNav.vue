@@ -22,7 +22,7 @@
                 <AppSubMenu v-if="typeof item === 'object'"
                   :submenu="item"
                 />
-                <span v-else class="menu-container__row-submenu__item-legend">{{item}}</span>
+                <p v-else class="menu-container__row-submenu__item-legend">{{item}}</p>
               </li>
             </ul>
         </section>
@@ -70,9 +70,9 @@ export default {
       this.$set(list, 'display', !list.display);
     },
     log({target}) {
-      const topEl = this.$el.lastElementChild;
+      const topEl = this.$el.querySelector('.menu-container');
 
-      if (target.matches('.first-level') && topEl.classList.contains(CLOSE_UP_CLASS)) {
+      if (target.matches('.first-level')) {
         topEl.classList.remove(CLOSE_UP_CLASS);
       } else {
         const isCloseUp = topEl.classList.contains(CLOSE_UP_CLASS);
@@ -87,8 +87,14 @@ export default {
         }
         if (antecedentSelected) {
           if (selectedElements.length && antecedentSelected === selectedElements[len - 1]) {
+         if (rowEl === antecedentSelected) { 
+              selectedElements.pop().classList.remove(SELECTED_CLASS);
+          if (selectedElements.length)  selectedElements[selectedElements.length - 1].classList.add(SELECTED_CLASS);
+          } else {
+            antecedentSelected.classList.remove(SELECTED_CLASS);
             rowEl.classList.add(SELECTED_CLASS);
             selectedElements.push(rowEl);
+          }
           } else if (antecedentSelected === selectedElements[len - 2]) {
               selectedElements.pop().classList.remove(SELECTED_CLASS);
           } else {
@@ -97,10 +103,11 @@ export default {
             rowEl.classList.add(SELECTED_CLASS);
             selectedElements.push(rowEl);
           }
-        } else {
+        } else if (rowEl){
           rowEl.classList.add(SELECTED_CLASS);
           selectedElements.push(rowEl);
         }
+        if (selectedElements.length === 0 && isCloseUp) topEl.classList.remove(CLOSE_UP_CLASS);
         /*
         if (parentMenu) {
           const parent = parentMenu.closest('.submenu-container');
@@ -121,6 +128,9 @@ export default {
   position: relative;
   height: 200px;
   overflow: auto;
+}
+.closeup-mode {
+overflow: clip; 
 }
 
 .menu-container__row-label:hover,
