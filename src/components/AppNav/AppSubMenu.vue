@@ -55,14 +55,21 @@ export default {
 }
 
 .submenu-container.selected-submenu {
-  color: green;
   background: white;
   position: absolute;
   width: 100%;
-  height: 200px;
+  height: 220px;
   top: 0;
   left: 0;
-  overflow: auto;
+}
+
+.submenu-container.selected-submenu > .submenu-container__legend {
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+}
+
+.selected-submenu > .submenu-container__legend > .submenu-container__legend_collapse {
+    margin-right: 10px;
 }
 
 .submenu-container__list-legend,

@@ -126,12 +126,15 @@ export default {
 
 .menu-container {
   position: relative;
-  height: 200px;
+  height: 220px;
   overflow: auto;
 }
 .closeup-mode {
 overflow: clip; 
 }
+.menu-container__row {
+    border-bottom: 1px solid rgb(204, 204, 204);
+    }
 
 .menu-container__row-label:hover,
 .menu-container__row-submenu__item:hover {
@@ -144,6 +147,7 @@ overflow: clip;
 }
 
 .menu-container__row-label {
+    padding: 6px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -179,6 +183,8 @@ overflow: clip;
 .menu-container__row-submenu {
   list-style-type: none;
     padding: 0;
+    background-color: rgb(248,248,248);
+    margin: 0;
 }
 
 .menu-container__row-submenu__item-legend {
