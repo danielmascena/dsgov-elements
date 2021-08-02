@@ -12,7 +12,7 @@
                 <AppSubMenu v-if="typeof item === 'object'"
                   :submenu="item"
                 />
-                <span class="submenu-container__list-legend" v-else>{{item}}</span>
+                <span class="submenu-container__list-legend" v-else><a>{{item}}</a></span>
             </li>
         </ul>
     </div>
@@ -66,8 +66,8 @@ export default {
 .submenu-container.selected-submenu > .submenu-container__legend {
     flex-direction: row-reverse;
     justify-content: flex-end;
+color: #0C326F;
 }
-
 .selected-submenu > .submenu-container__legend > .submenu-container__legend_collapse {
     margin-right: 10px;
 }
@@ -78,6 +78,7 @@ export default {
     justify-content: space-between;
     align-content: center;
     cursor: pointer;
+    color: #1351B4;
     margin: 0;
     padding: 16px;
 }

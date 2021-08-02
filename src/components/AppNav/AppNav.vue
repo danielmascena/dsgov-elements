@@ -12,7 +12,7 @@
       <nav class="menu-container__content">
         <section v-for="(list, key) in menu" :key="key+list.length" class="menu-container__row">
             <div class="menu-container__row-label first-level" @click.capture="activateSubmenu(list)">
-              <span class="first-level">{{key}}</span>
+              <span class="menu-container__row-label__text first-level">{{key}}</span>
               <button v-show="Array.isArray(list) && list.length > 1" class="menu-container__row-label__collapse first-level">
                 <i class="first-level fas" :class="{'fa-angle-up': list.display, 'fa-angle-down': !list.display}" aria-hidden="true"></i>
               </button>
@@ -154,6 +154,10 @@ overflow: clip;
   cursor: pointer;
 }
 
+.menu-container__row-label__text {
+color: #1351B4;
+}
+
 .menu-container__row-label__collapse {
     --color-primary-default: #1351b4;
     --button-medium: 40px;
@@ -191,5 +195,6 @@ overflow: clip;
   cursor: pointer;
   margin: 0;
   padding: 16px;
+color: #1351B4;
 }
 </style>
