@@ -39,46 +39,46 @@
 
       <app-list :items="['item 1', 'item 2', 'item 3']"></app-list>
 
-      <app-nav :menuList="{
-        'menu group 1': [
-          'menu item 1',
-          {
-            text: 'menu item ',
-            list: [
-              'submenu item 1',
-              'submenu item 1',
-              'submenu item 1'
-            ]
-          },
-          'menu item'
-        ],
-        'menu group 2': [
-          'menu item 2',
-          {
-            text: 'menu item ',
-            list: [
-              'submenu item 2',
+      <app-nav :list='{
+            "menu group 1": [
+              "menu item 1",
               {
-                text: 'submenu item 2',
-                list: [
-                  'child submenu item 2',
-                  {
-                    text: 'child submenu item 2',
-                    list: [
-                      'last level',
-                      'last level',
-                      'last level',
-                    ]
-                  },
-                  'child submenu item 2'
-                ]  
+                "text": "menu item ",
+                "list": [
+                  "submenu item 1",
+                  "submenu item 1",
+                  "submenu item 1"
+                ]
               },
-              'submenu item 2'
+              "menu item"
+            ],
+            "menu group 2": [
+              "menu item 2",
+              {
+                "text": "menu item ",
+                "list": [
+                  "submenu item 2",
+                  {
+                    "text": "submenu item 2",
+                    "list": [
+                      "child submenu item 2",
+                      {
+                        "text": "child submenu item 2",
+                        "list": [
+                          "last level",
+                          "last level",
+                          "last level"
+                        ]
+                      },
+                      "child submenu item 2"
+                    ]  
+                  },
+                  "submenu item 2"
+                ]
+              },
+              "menu item"
             ]
-          },
-          'menu item'
-        ]
-      }">        
+          }'>        
         <AppList 
           slot="menu-addons" 
           :items="['item 11', 'item 21', 'item 31']"

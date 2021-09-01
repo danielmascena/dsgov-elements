@@ -55,18 +55,18 @@ export default {
 }
 
 .submenu-container.selected-submenu {
-  background: white;
-  position: absolute;
-  width: 100%;
-  height: 220px;
-  top: 0;
-  left: 0;
+    background: white;
+    position: absolute;
+    width: 100%;
+    height: 220px;
+    top: 0;
+    left: 0;
 }
 
 .submenu-container.selected-submenu > .submenu-container__legend {
     flex-direction: row-reverse;
     justify-content: flex-end;
-color: #0C326F;
+    color: #0C326F;
 }
 .selected-submenu > .submenu-container__legend > .submenu-container__legend_collapse {
     margin-right: 10px;
